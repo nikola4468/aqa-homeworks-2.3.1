@@ -3,13 +3,21 @@ package ru.netology.delivery.data;
 import com.github.javafaker.Faker;
 import lombok.experimental.UtilityClass;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 
+import static java.time.format.DateTimeFormatter.ofPattern;
+
 @UtilityClass
 public class DataGenerator {
+
+    public static String getDate(int day) {
+        return LocalDate.now().plusDays(day).format(ofPattern("dd.MM.yyyy"));
+    }
+
     public static RegistrationInfo generationInfo(String locale) {
         Faker faker = new Faker(new Locale(locale));
         return new RegistrationInfo(
